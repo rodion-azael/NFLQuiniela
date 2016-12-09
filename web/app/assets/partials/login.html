@@ -1,0 +1,15 @@
+<div class="row">
+<div class="col-md-4 col-md-offset-4  col-sm-12 col-sm-offset-0 boxed">
+	<h3>Cubil NFL</h3>
+	<p class="lead">
+		Usuario:
+		<input type="text" ng-model="vm.User" class="form-control"/>
+	</p>
+	<p class="lead">
+		Password:
+		<input type="password" ng-model="vm.Pass" class="form-control" id="passInput"/>
+	</p>
+	<button ng-click="vm.login()" class="btn btn-primary">Entrar</button>
+</div>
+<div class="col-md-4 col-md-offset-4 col-sm-12 col-sm-offset-0"><p><small style="color:red;">{{vm.errorMsg}}</small></p></div>
+</div>

@@ -1,0 +1,12 @@
+<div class="select-team-container">
+	<div class="row">
+		<div class="col-md-12 header">
+			<h4>Elige un Equipo</h4>
+			<div class="col-md-6 conference-select" ng-click="vm.changeConference('NFC')">NFC</div>
+			<div class="col-md-6 conference-select" ng-click="vm.changeConference('AFC')">AFC</div>
+		</div>
+		<div class="col-md-3 team-picker" ng-repeat="team in vm.Teams" ng-if="(vm.SelectedConference == team.Conference)">
+			<img src="img/{{team.Image}}" class="img-responsive center-block" ng-click="vm.pickTeam(team.TeamId)">
+		</div>
+	</div>
+</div>

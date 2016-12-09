@@ -1,0 +1,43 @@
+<div class="row" style="margin-bottom:15px;">
+	<div class="col-md-12">
+		<h4>Pronosticos Semana {{vm.week}}</h4>
+		<table class="table table-striped matchs">
+			<thead>
+				<th>Visitante</th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th>Local</th>
+			</thead>
+			<tr ng-repeat="match in vm.Matchs" ng-class="{'non-editable-row': (match.IsEditable == '0')}">
+				<td class="pick-a-team">
+					<div id="team{{match.AwayID}}" 
+						ng-class="{'team-selected': (match.AwayID == match.UserInput)}">
+							<img src="img/{{match.AwayImage}}" class="img-responsive center-block"
+									ng-click="vm.pickTeam(match.MatchID, match.AwayID, match.High, $index)"/>
+					<br>
+					<p>{{match.AwayName}} {{match.AwayState}}</p>
+					</div>
+				</td>
+				<td><p>{{match.AwayPts}}</p></td>
+				<td>
+					<select ng-model="match.High" class="form-control" ng-change="vm.pickTeam(match.MatchID, 0, match.High, $index)" ng-disabled="!vm.isEditable($index)">
+						<option value="1">8 o mas</option>
+						<option value="0">7 o menos</option>
+					</select>
+				</td>	
+				<td><p>{{match.HomePts}}</p></td>
+				<td class="pick-a-team">
+					<div id="team{{match.HomeID}}"
+						ng-class="{'team-selected': (match.HomeID == match.UserInput)}">
+							<img src="img/{{match.HomeImage}}" class="img-responsive center-block" 
+								ng-click="vm.pickTeam(match.MatchID, match.HomeID, match.High, $index)"/>
+					<br>
+					<p>{{match.HomeName}} {{match.HomeState}}</p>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="col-md-2 col-md-offset-10"><button class="btn btn-primary" ng-click="vm.saveInputs()">Guardar</button></div>
+	</div>
+</div>

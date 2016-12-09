@@ -1,0 +1,54 @@
+<div class="col-md-10 col-md-offset-1">
+	<div><h3>Partidos Semana {{vm.week}}</h3></div>
+	<table class="table table-striped matchs">
+		<thead>
+			<th>Visitante</th>
+			<th>Local</th>
+			<th>Inicio del Partido</th>
+			<th>Limite para captura</th>
+			<th></th>
+		</thead>
+		<tr ng-repeat="match in vm.Matchs">
+			<td>
+				<img src="img/{{match.AwayImage}}" class="img-responsive center-block">
+				<p>{{match.AwayName}} {{match.AwayState}}</p>
+			</td>
+			<td>
+				<img src="img/{{match.HomeImage}}" class="img-responsive center-block">
+				<p>{{match.HomeName}} {{match.HomeState}}</p>
+			</td>
+			<td>{{match.GameTime}}</td>
+			<td>{{match.CaptureLimit}}</td>
+			<td><a href="" ng-click="vm.deteleMatch(match.ID)">Eliminar</a></td>
+		</tr>
+		<tr class="add-new">
+			<td id="awaySelected">
+				<img src="img/select.jpg" class="img-responsive center-block" ng-click="vm.selectTeam('awaySelected')">
+				<p>Select Team</p>
+			</td>
+			<td id="homeSelected">
+				<img src="img/select.jpg" class="img-responsive center-block" ng-click="vm.selectTeam('homeSelected')">
+				<p>Select Team</p>
+			</td>
+			<td>
+				<input type="text" 
+					class="form-control"
+       				datetimepicker
+       				datetimepicker-options="vm.dateTimePickerOption"
+       				name="time1"
+					ng-model="vm.NewMatchStart">	
+			</td>
+			<td>
+				<input type="text" 
+					class="form-control"
+       				datetimepicker
+       				datetimepicker-options="vm.dateTimePickerOption"
+       				name="time1"
+					ng-model="vm.NewMatchLimit">	
+			</td>
+			<td>
+				<button class="btn btn-primary" ng-click="vm.saveNewMatch()">Guardar</button>
+			</td>
+		</tr>
+	</table>
+</div>

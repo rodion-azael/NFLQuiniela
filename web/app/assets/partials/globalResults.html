@@ -1,0 +1,28 @@
+<div class="row">
+<div class="col-md-12">
+	<div class="col-md-6"><h3>Resultados</h3></div>	
+	<div class="col-md-6">
+		<h3>
+			<select ng-model="vm.season" ng-change="vm.changeSeason()" class="form-control">
+				<option ng-repeat="season in vm.Seasons" value="{{season.ID}}" ng-selected="(vm.season == season.ID)">{{season.Name}}</option>
+			</select>	
+		</h3>
+	</div>
+	<table class="table table-striped user-view-results">
+		<tr>
+			<td>#</td>
+			<td>Nombre</td>
+			<td>Total</td>
+			<td ng-repeat="week in vm.Weeks">S{{week.Number}}</td>
+			<td style="text-align:center;">$$</td>
+		</tr>
+		<tr ng-repeat="res in vm.Results" ng-class="{'my-name': (res.UserID == vm.user.UserID)}">
+			<td>{{$index + 1}}</td>
+			<td>{{res.Name}} {{res.LastName}}</td>
+			<td>{{res.TotalPoints}}</td>
+			<td ng-repeat="week in vm.Weeks">{{ ::vm.userWeekPts(week.WeekID, res.Points) }}</td>
+			<td class="{{::vm.priceByPos[$index].class}}">{{::vm.prizePrefix}} {{::vm.priceByPos[$index].value}}</td>
+		</tr>
+	</table>
+</div>
+</div>

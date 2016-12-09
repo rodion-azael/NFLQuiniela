@@ -1,0 +1,58 @@
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-6"><h3>Semanas {{vm.Seasons[vm.season].Name}}</h3></div>
+	<div class="col-md-6">
+		<h3>
+			<select ng-model="vm.season" ng-change="vm.changeSeason()" class="form-control">
+				<option ng-repeat="season in vm.Seasons" value="{{season.ID}}" ng-selected="(vm.season == season.ID)">{{season.Name}}</option>
+			</select>	
+		</h3>
+	</div>
+	<table class="table table-striped matchs">
+		<thead>
+			<th>Semana</th>
+			<th>Inicia</th>
+			<th>Termina</th>
+			<th>Acciones</th>
+		</thead>
+		<tr ng-if="vm.canEdit()">
+			<td><input class="form-control" ng-model="vm.newWeekNumber"></td>
+			<td>
+				<input type="text" 
+						class="form-control"
+           				datetimepicker
+           				datetimepicker-options="vm.dateTimePickerOption"
+           				name="time1"
+   						ng-model="vm.newWeekStart">			
+   			</td>
+			<td>
+				<input type="text" 
+					class="form-control"
+       				datetimepicker
+       				datetimepicker-options="vm.dateTimePickerOption"
+       				name="time2"
+					ng-model="vm.newWeekEnd">
+			</td>
+			<td><button class="btn btn-primary" ng-click="vm.saveNewWeek()">Guardar Nueva</button></td>
+		</tr>
+		<tr ng-repeat="week in vm.Weeks">
+			<td><p>{{week.Number}}</p></td>
+			<td>{{week.Start}}</td>
+			<td>{{week.End}}</td>
+			<td>
+				<div ng-if="vm.canEdit()" class="btn-container">
+					<a ui-sref="main.matchs({weekID: week.WeekID, week: week.Number})" class="btn btn-warning" role="button">Editar</a>
+					<a ui-sref="main.results({weekID: week.WeekID, week: week.Number})" class="btn btn-warning" role="button">Resultados</a>
+					<a href="" ng-click="vm.deleteWeek(week.WeekID)" class="btn btn-warning" role="button">Eliminar</a>
+				</div>
+				<div class="btn-container">
+					<a href="" ui-sref="main.inputs({weekID: week.WeekID, week: week.Number})" class="btn btn-success" role="button" ng-disabled="(week.IsEditable != '1')">Pronosticar</a>
+					<a href="" ui-sref="main.viewResults({weekID: week.WeekID, week: week.Number})" class="btn btn-success" role="button">Resultados</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+</div>

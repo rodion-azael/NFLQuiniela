@@ -1,0 +1,22 @@
+{
+  "name": "appAgenda",
+  "description": "Description",
+  "author": "Your Name",
+  "version": "0.0.1",
+  "repository": "",
+  "scripts": {
+    "start": "brunch watch --server",
+    "test": "brunch test"
+  },
+  "dependencies": {
+    "angular-bootstrap-datetimepicker": "^1.0.1",
+    "clean-css-brunch": "~1.6.0",
+    "coffee-script-brunch": "^1.7.3",
+    "css-brunch": "~1.6.0",
+    "javascript-brunch": "~1.6.0",
+    "less": "~1.5.1",
+    "less-brunch": "~1.7.1",
+    "moment": ">=2.4.0",
+    "uglify-js-brunch": "~1.7.2"
+  }
+}

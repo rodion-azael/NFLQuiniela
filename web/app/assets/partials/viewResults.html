@@ -1,0 +1,31 @@
+<div class="row">
+<div class="col-md-12">
+	<h3>Resultados Semana {{vm.week}}</h3>
+	<table class="table table-striped user-view-results">
+		<tr>
+			<td style="vertical-align: bottom;">Nombre</td>
+			<td style="vertical-align: bottom;">Puntos</td>
+			<td ng-repeat="game in vm.Results" class="text-center" >
+				<div class="col-md-12 no-padding">
+					<img src="img/{{game.AwayImage}}" class="img-responsive center-block" >{{game.AwayPts}}
+				</div>
+				<div class="col-md-12 no-padding">
+					<img src="img/{{game.HomeImage}}" class="img-responsive center-block" >{{game.HomePts}}
+				</div>
+			</td>
+		</tr>
+		<tr ng-repeat="picks in vm.Picks" ng-class="{'my-name': (picks.UserID == vm.user.UserID)}">
+			<td class="name-view-results">
+				<p>{{picks.Name}} {{picks.LastName}}</p>
+			</td>
+			<td>
+				<span class="points-per-user">{{picks.Points}}</span>
+			</td>
+			<td ng-repeat="pick in picks.Picks" class="pick-view-result" ng-class="vm.getRightPick(pick.Points)">
+				<img src="img/{{pick.PickImage}}" class="img-responsive center-block" ng-class="{'not-captured': (pick.IsCaptured == '0')}"/>
+				<small>{{pick.High != '-1' ? pick.High == '1' ? '8' : '7' : 'X'}}</small>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
